@@ -14,13 +14,18 @@ The release workflow does the publishing; a maintainer only pushes a tag.
    account. Optional but recommended: reserve the `Fulcrum` ID prefix under
    *Manage Packages → Reserve a prefix* so no one else can publish
    `Fulcrum.*`.
-3. **API key.** On nuget.org go to *API Keys → Create*. Scope: *Push new
-   packages and package versions*. Glob pattern: `Fulcrum*`. Expiry: one
-   year. Copy the key once; it is not shown again.
+3. **Trusted Publishing policy.** On nuget.org open your profile name →
+   *Trusted Publishing → Add*. Repository owner: your GitHub user or org.
+   Repository: `fulcrum`. Workflow file: `release.yml` (file name only).
+   Environment: leave empty. Scope: *Push new packages and package versions*,
+   glob `Fulcrum*`. The workflow then exchanges GitHub's OIDC token for a
+   one-hour key at release time; no long-lived key is stored anywhere. A new
+   policy may be active for only 7 days until the first successful publish;
+   restart the window from the same page if the first release slips.
 4. **GitHub secret.** In the repository, *Settings → Secrets and variables →
-   Actions → New repository secret*: name `NUGET_API_KEY`, value the key from
-   step 3. Optionally add `OPENROUTER_API_KEY` so CI also runs the live tests
-   against Jev on OpenRouter.
+   Actions → New repository secret*: name `NUGET_USER`, value your nuget.org
+   profile name (not the email). Optionally add `OPENROUTER_API_KEY` so CI
+   also runs the live tests against Jev on OpenRouter.
 
 ## Every release
 
@@ -39,8 +44,9 @@ The release workflow does the publishing; a maintainer only pushes a tag.
    ```
 
 6. Watch the *release* workflow. It builds with `-p:Version=X.Y.Z`, runs the
-   tests, packs the three projects with symbol packages (`.snupkg`), pushes
-   them to nuget.org with `--skip-duplicate`, and creates a GitHub release
+   tests, packs the three projects with symbol packages (`.snupkg`), logs in
+   to nuget.org through Trusted Publishing, pushes them with
+   `--skip-duplicate`, and creates a GitHub release
    whose notes are the CHANGELOG section. Packages appear on nuget.org within a
    few minutes; indexing for `dotnet add package` can take up to an hour.
 
@@ -62,7 +68,8 @@ dotnet add package Fulcrum --version 1.0.0 --source /path/to/fulcrum/artifacts -
 
 ## Publishing by hand
 
-If the workflow cannot run, the same commands work locally:
+If the workflow cannot run, the same commands work locally with a personal
+API key from nuget.org (*API Keys → Create*, scope push, glob `Fulcrum*`):
 
 ```sh
 REPO_URL=$(git remote get-url origin | sed -E 's#^git@github.com:#https://github.com/#; s#\.git$##')
