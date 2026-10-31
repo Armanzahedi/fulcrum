@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fulcrum\Fulcrum.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\TestDecisions.cs" Link="Shared\TestDecisions.cs" />
+  </ItemGroup>
+</Project>

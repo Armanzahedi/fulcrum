@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Fulcrum.Sample.Tickets</RootNamespace>
+    <PublishAot>true</PublishAot>
+    <NoWarn>$(NoWarn);FUL0001</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fulcrum\Fulcrum.csproj" />
+    <ProjectReference Include="..\..\src\Fulcrum.Jev\Fulcrum.Jev.csproj" />
+    <ProjectReference Include="..\..\src\Fulcrum.OpenAI\Fulcrum.OpenAI.csproj" />
+  </ItemGroup>
+</Project>

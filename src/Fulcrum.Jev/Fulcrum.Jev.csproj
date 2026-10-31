@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Fulcrum provider for the native Jev System One API (POST /v1/systemone). Experimental (FUL0001).</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fulcrum\Fulcrum.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\RetryingHandler.cs" Link="Shared\RetryingHandler.cs" />
+    <Compile Include="..\Shared\Endpoint.cs" Link="Shared\Endpoint.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Fulcrum.Jev.Tests" />
+  </ItemGroup>
+</Project>

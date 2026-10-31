@@ -1,0 +1,16 @@
+#nullable enable
+Fulcrum.OpenAI.OpenAIClient
+Fulcrum.OpenAI.OpenAIClient.AskAsync(Fulcrum.Content! state, System.Collections.Generic.IReadOnlyList<Fulcrum.Question!>! questions, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<Fulcrum.Answers!>!
+Fulcrum.OpenAI.OpenAIClient.OpenAIClient(System.Net.Http.HttpClient! http, Fulcrum.OpenAI.OpenAIOptions! options) -> void
+Fulcrum.OpenAI.OpenAIOptions
+Fulcrum.OpenAI.OpenAIOptions.ApiKey.get -> string?
+Fulcrum.OpenAI.OpenAIOptions.ApiKey.set -> void
+Fulcrum.OpenAI.OpenAIOptions.BaseAddress.get -> System.Uri!
+Fulcrum.OpenAI.OpenAIOptions.BaseAddress.set -> void
+Fulcrum.OpenAI.OpenAIOptions.MaxAttempts.get -> int
+Fulcrum.OpenAI.OpenAIOptions.MaxAttempts.set -> void
+Fulcrum.OpenAI.OpenAIOptions.Model.get -> string!
+Fulcrum.OpenAI.OpenAIOptions.Model.set -> void
+Fulcrum.OpenAI.OpenAIOptions.OpenAIOptions() -> void
+Fulcrum.OpenAIFulcrumBuilderExtensions
+static Fulcrum.OpenAIFulcrumBuilderExtensions.UseOpenAI(this Fulcrum.FulcrumBuilder! f, System.Action<Fulcrum.OpenAI.OpenAIOptions!>! configure) -> Fulcrum.FulcrumBuilder!

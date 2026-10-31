@@ -1,0 +1,32 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+      - run: dotnet build -c Release -p:Version=$VERSION -p:ContinuousIntegrationBuild=true -p:RepositoryUrl=https://github.com/${{ github.repository }}
+      - run: dotnet test -c Release --no-build
+      - run: |
+          for p in src/Fulcrum src/Fulcrum.Jev src/Fulcrum.OpenAI; do
+            dotnet pack "$p" -c Release --no-build -p:Version=$VERSION -p:RepositoryUrl=https://github.com/${{ github.repository }} -o artifacts
+          done
+      - run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: GitHub release from CHANGELOG
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          awk -v v="$VERSION" '$0 ~ "^## \\[" v "\\]" {f=1; next} /^## \[/ {f=0} f' CHANGELOG.md > notes.md
+          grep -q '[^[:space:]]' notes.md || { echo "CHANGELOG.md has no section for $VERSION"; exit 1; }
+          gh release create "$GITHUB_REF_NAME" artifacts/*.nupkg --title "$GITHUB_REF_NAME" --notes-file notes.md

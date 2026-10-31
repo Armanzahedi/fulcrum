@@ -1,0 +1,324 @@
+#nullable enable
+~override Fulcrum.Box.Equals(object obj) -> bool
+~override Fulcrum.Box.ToString() -> string
+abstract Fulcrum.Answer.<Clone>$() -> Fulcrum.Answer!
+abstract Fulcrum.Condition.<Clone>$() -> Fulcrum.Condition!
+abstract Fulcrum.Decision<TState, TOutcome>.Define(Fulcrum.IRules<TOutcome>! rules) -> void
+abstract Fulcrum.Decision<TState, TOutcome>.Describe(TState state) -> Fulcrum.Content!
+abstract Fulcrum.Question.<Clone>$() -> Fulcrum.Question!
+Fulcrum.Answer
+Fulcrum.Answer.Answer(Fulcrum.Answer! original) -> void
+Fulcrum.Answer.Answer(string! Question) -> void
+Fulcrum.Answer.Deconstruct(out string! Question) -> void
+Fulcrum.Answer.Question.get -> string!
+Fulcrum.Answer.Question.init -> void
+Fulcrum.Answers
+Fulcrum.Answers.Answers(System.Collections.Generic.IReadOnlyDictionary<string!, Fulcrum.Answer!>! raw) -> void
+Fulcrum.Answers.Get(Fulcrum.BoxQuestion! q) -> Fulcrum.BoxAnswer!
+Fulcrum.Answers.Get(Fulcrum.YesNoQuestion! q) -> Fulcrum.YesNoAnswer!
+Fulcrum.Answers.Get<TEnum>(Fulcrum.ChoiceQuestion<TEnum>! q) -> Fulcrum.ChoiceAnswer<TEnum>!
+Fulcrum.Answers.Get<TEnum>(Fulcrum.ScoreQuestion<TEnum>! q) -> Fulcrum.ScoreAnswer<TEnum>!
+Fulcrum.Answers.Raw.get -> System.Collections.Generic.IReadOnlyDictionary<string!, Fulcrum.Answer!>!
+Fulcrum.Answers.Validate(Fulcrum.Content! state, System.Collections.Generic.IReadOnlyList<Fulcrum.Question!>! questions) -> System.Collections.Generic.IReadOnlyList<string!>!
+Fulcrum.Box
+Fulcrum.Box.Box() -> void
+Fulcrum.Box.Box(int Image, double X, double Y, double Width, double Height, double Confidence) -> void
+Fulcrum.Box.Confidence.get -> double
+Fulcrum.Box.Confidence.init -> void
+Fulcrum.Box.Deconstruct(out int Image, out double X, out double Y, out double Width, out double Height, out double Confidence) -> void
+Fulcrum.Box.Equals(Fulcrum.Box other) -> bool
+Fulcrum.Box.Height.get -> double
+Fulcrum.Box.Height.init -> void
+Fulcrum.Box.Image.get -> int
+Fulcrum.Box.Image.init -> void
+Fulcrum.Box.Width.get -> double
+Fulcrum.Box.Width.init -> void
+Fulcrum.Box.X.get -> double
+Fulcrum.Box.X.init -> void
+Fulcrum.Box.Y.get -> double
+Fulcrum.Box.Y.init -> void
+Fulcrum.BoxAnswer
+Fulcrum.BoxAnswer.BoxAnswer(string! Question, System.Collections.Generic.IReadOnlyList<Fulcrum.Box>! Boxes) -> void
+Fulcrum.BoxAnswer.Boxes.get -> System.Collections.Generic.IReadOnlyList<Fulcrum.Box>!
+Fulcrum.BoxAnswer.Boxes.init -> void
+Fulcrum.BoxAnswer.Deconstruct(out string! Question, out System.Collections.Generic.IReadOnlyList<Fulcrum.Box>! Boxes) -> void
+Fulcrum.BoxAnswer.Equals(Fulcrum.BoxAnswer? other) -> bool
+Fulcrum.BoxQuestion
+Fulcrum.BoxQuestion.Count() -> Fulcrum.CountRef!
+Fulcrum.BoxQuestion.Equals(Fulcrum.BoxQuestion? other) -> bool
+Fulcrum.BoxQuestion.Found() -> Fulcrum.Condition!
+Fulcrum.BoxQuestion.FoundAbove(double confidence) -> Fulcrum.Condition!
+Fulcrum.BoxQuestion.None() -> Fulcrum.Condition!
+Fulcrum.ChoiceAnswer
+Fulcrum.ChoiceAnswer.Choice.get -> string!
+Fulcrum.ChoiceAnswer.Choice.init -> void
+Fulcrum.ChoiceAnswer.ChoiceAnswer(string! Question, string! Choice, System.Collections.Generic.IReadOnlyDictionary<string!, double>! Probabilities) -> void
+Fulcrum.ChoiceAnswer.Confidence.get -> double
+Fulcrum.ChoiceAnswer.Deconstruct(out string! Question, out string! Choice, out System.Collections.Generic.IReadOnlyDictionary<string!, double>! Probabilities) -> void
+Fulcrum.ChoiceAnswer.Equals(Fulcrum.ChoiceAnswer? other) -> bool
+Fulcrum.ChoiceAnswer.Probabilities.get -> System.Collections.Generic.IReadOnlyDictionary<string!, double>!
+Fulcrum.ChoiceAnswer.Probabilities.init -> void
+Fulcrum.ChoiceAnswer<TEnum>
+Fulcrum.ChoiceAnswer<TEnum>.<Clone>$() -> Fulcrum.ChoiceAnswer<TEnum>!
+Fulcrum.ChoiceAnswer<TEnum>.ChoiceAnswer(TEnum Value, double Confidence, System.Collections.Generic.IReadOnlyDictionary<TEnum, double>! Probabilities) -> void
+Fulcrum.ChoiceAnswer<TEnum>.Confidence.get -> double
+Fulcrum.ChoiceAnswer<TEnum>.Confidence.init -> void
+Fulcrum.ChoiceAnswer<TEnum>.Deconstruct(out TEnum Value, out double Confidence, out System.Collections.Generic.IReadOnlyDictionary<TEnum, double>! Probabilities) -> void
+Fulcrum.ChoiceAnswer<TEnum>.Equals(Fulcrum.ChoiceAnswer<TEnum>? other) -> bool
+Fulcrum.ChoiceAnswer<TEnum>.Probabilities.get -> System.Collections.Generic.IReadOnlyDictionary<TEnum, double>!
+Fulcrum.ChoiceAnswer<TEnum>.Probabilities.init -> void
+Fulcrum.ChoiceAnswer<TEnum>.Value.get -> TEnum
+Fulcrum.ChoiceAnswer<TEnum>.Value.init -> void
+Fulcrum.ChoiceQuestion<TEnum>
+Fulcrum.ChoiceQuestion<TEnum>.ConfidenceAbove(double t) -> Fulcrum.Condition!
+Fulcrum.ChoiceQuestion<TEnum>.Equals(Fulcrum.ChoiceQuestion<TEnum>? other) -> bool
+Fulcrum.ChoiceQuestion<TEnum>.Is(TEnum value) -> Fulcrum.Condition!
+Fulcrum.ChoiceQuestion<TEnum>.IsNot(TEnum value) -> Fulcrum.Condition!
+Fulcrum.ChoiceQuestion<TEnum>.Options.get -> System.Collections.Generic.IReadOnlyList<(TEnum Value, string! Description)>!
+Fulcrum.Condition
+Fulcrum.Condition.Condition(Fulcrum.Condition! original) -> void
+Fulcrum.Content
+Fulcrum.Content.Images.get -> System.Collections.Generic.IReadOnlyList<Fulcrum.Image!>!
+Fulcrum.Content.Text.get -> string!
+Fulcrum.Content.WithImage(System.ReadOnlyMemory<byte> bytes, string! mediaType) -> Fulcrum.Content!
+Fulcrum.Content.WithImage(System.Uri! url) -> Fulcrum.Content!
+Fulcrum.CountRef
+Fulcrum.CountRef.Above(int n) -> Fulcrum.Condition!
+Fulcrum.CountRef.AtLeast(int n) -> Fulcrum.Condition!
+Fulcrum.CountRef.Below(int n) -> Fulcrum.Condition!
+Fulcrum.CountRef.Is(int n) -> Fulcrum.Condition!
+Fulcrum.Decision<TState, TOutcome>
+Fulcrum.Decision<TState, TOutcome>.DecideAsync(TState state, Fulcrum.ISystemOne! model, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Fulcrum.DecisionResult<TOutcome>!>!
+Fulcrum.Decision<TState, TOutcome>.DecideAsync(TState state, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Fulcrum.DecisionResult<TOutcome>!>!
+Fulcrum.Decision<TState, TOutcome>.Decision() -> void
+Fulcrum.Decision<TState, TOutcome>.RunAsync(TState state, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Fulcrum.DecisionResult<TOutcome>!>!
+Fulcrum.DecisionResult<TOutcome>
+Fulcrum.DecisionResult<TOutcome>.Answers.get -> Fulcrum.Answers!
+Fulcrum.DecisionResult<TOutcome>.Confidence.get -> double?
+Fulcrum.DecisionResult<TOutcome>.Decision.get -> string!
+Fulcrum.DecisionResult<TOutcome>.Error.get -> System.Exception?
+Fulcrum.DecisionResult<TOutcome>.Explain() -> string!
+Fulcrum.DecisionResult<TOutcome>.IsFallback.get -> bool
+Fulcrum.DecisionResult<TOutcome>.MatchedRule.get -> string?
+Fulcrum.DecisionResult<TOutcome>.Outcome.get -> TOutcome
+Fulcrum.FulcrumBuilder
+Fulcrum.FulcrumBuilder.AddDecision<TDecision>() -> Fulcrum.FulcrumBuilder!
+Fulcrum.FulcrumBuilder.AddDecisionsFromAssembly(System.Reflection.Assembly! assembly) -> Fulcrum.FulcrumBuilder!
+Fulcrum.FulcrumBuilder.UseClient(System.Func<System.IServiceProvider!, Fulcrum.ISystemOne!>! factory) -> Fulcrum.FulcrumBuilder!
+Fulcrum.FulcrumBuilder.UseClient<TClient>() -> Fulcrum.FulcrumBuilder!
+Fulcrum.FulcrumBuilder.UseFake(Fulcrum.Testing.FakeSystemOne! fake) -> Fulcrum.FulcrumBuilder!
+Fulcrum.FulcrumException
+Fulcrum.FulcrumException.FulcrumException(string! message) -> void
+Fulcrum.IDecision
+Fulcrum.Image
+Fulcrum.Image.<Clone>$() -> Fulcrum.Image!
+Fulcrum.Image.Bytes.get -> System.ReadOnlyMemory<byte>?
+Fulcrum.Image.Equals(Fulcrum.Image? other) -> bool
+Fulcrum.Image.MediaType.get -> string?
+Fulcrum.Image.Url.get -> System.Uri?
+Fulcrum.IOutcomeHandler<TState, TOutcome>
+Fulcrum.IOutcomeHandler<TState, TOutcome>.HandleAsync(TState state, Fulcrum.DecisionResult<TOutcome>! result, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+Fulcrum.IReaction<TState, TOutcome>
+Fulcrum.IReaction<TState, TOutcome>.Nothing() -> void
+Fulcrum.IReaction<TState, TOutcome>.With(System.Func<TState, Fulcrum.DecisionResult<TOutcome>!, System.Threading.CancellationToken, System.Threading.Tasks.Task!>! handler) -> void
+Fulcrum.IReaction<TState, TOutcome>.With<THandler>() -> void
+Fulcrum.IReactions<TState, TOutcome>
+Fulcrum.IReactions<TState, TOutcome>.On(TOutcome outcome) -> Fulcrum.IReaction<TState, TOutcome>!
+Fulcrum.IRule<TOutcome>
+Fulcrum.IRule<TOutcome>.Then(TOutcome outcome, string? name = null) -> void
+Fulcrum.IRules<TOutcome>
+Fulcrum.IRules<TOutcome>.Default(TOutcome outcome) -> void
+Fulcrum.IRules<TOutcome>.OnError(TOutcome outcome) -> void
+Fulcrum.IRules<TOutcome>.When(Fulcrum.Condition! condition) -> Fulcrum.IRule<TOutcome>!
+Fulcrum.IRules<TOutcome>.WhenAnyConfidenceBelow(double threshold) -> Fulcrum.IRule<TOutcome>!
+Fulcrum.ISystemOne
+Fulcrum.ISystemOne.AskAsync(Fulcrum.Content! state, System.Collections.Generic.IReadOnlyList<Fulcrum.Question!>! questions, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<Fulcrum.Answers!>!
+Fulcrum.Question
+Fulcrum.Question.Name.get -> string!
+Fulcrum.Question.Question(Fulcrum.Question! original) -> void
+Fulcrum.Question.Text.get -> string!
+Fulcrum.ScoreAnswer
+Fulcrum.ScoreAnswer.Confidence.get -> double
+Fulcrum.ScoreAnswer.Deconstruct(out string! Question, out int Level, out System.Collections.Generic.IReadOnlyList<double>! Probabilities) -> void
+Fulcrum.ScoreAnswer.Equals(Fulcrum.ScoreAnswer? other) -> bool
+Fulcrum.ScoreAnswer.Level.get -> int
+Fulcrum.ScoreAnswer.Level.init -> void
+Fulcrum.ScoreAnswer.Probabilities.get -> System.Collections.Generic.IReadOnlyList<double>!
+Fulcrum.ScoreAnswer.Probabilities.init -> void
+Fulcrum.ScoreAnswer.ScoreAnswer(string! Question, int Level, System.Collections.Generic.IReadOnlyList<double>! Probabilities) -> void
+Fulcrum.ScoreAnswer<TEnum>
+Fulcrum.ScoreAnswer<TEnum>.<Clone>$() -> Fulcrum.ScoreAnswer<TEnum>!
+Fulcrum.ScoreAnswer<TEnum>.Confidence.get -> double
+Fulcrum.ScoreAnswer<TEnum>.Confidence.init -> void
+Fulcrum.ScoreAnswer<TEnum>.Deconstruct(out TEnum Value, out double Confidence, out System.Collections.Generic.IReadOnlyDictionary<TEnum, double>! Probabilities) -> void
+Fulcrum.ScoreAnswer<TEnum>.Equals(Fulcrum.ScoreAnswer<TEnum>? other) -> bool
+Fulcrum.ScoreAnswer<TEnum>.Probabilities.get -> System.Collections.Generic.IReadOnlyDictionary<TEnum, double>!
+Fulcrum.ScoreAnswer<TEnum>.Probabilities.init -> void
+Fulcrum.ScoreAnswer<TEnum>.ScoreAnswer(TEnum Value, double Confidence, System.Collections.Generic.IReadOnlyDictionary<TEnum, double>! Probabilities) -> void
+Fulcrum.ScoreAnswer<TEnum>.Value.get -> TEnum
+Fulcrum.ScoreAnswer<TEnum>.Value.init -> void
+Fulcrum.ScoreQuestion<TEnum>
+Fulcrum.ScoreQuestion<TEnum>.AtLeast(TEnum level) -> Fulcrum.Condition!
+Fulcrum.ScoreQuestion<TEnum>.AtMost(TEnum level) -> Fulcrum.Condition!
+Fulcrum.ScoreQuestion<TEnum>.ConfidenceAbove(double t) -> Fulcrum.Condition!
+Fulcrum.ScoreQuestion<TEnum>.Equals(Fulcrum.ScoreQuestion<TEnum>? other) -> bool
+Fulcrum.ScoreQuestion<TEnum>.Is(TEnum level) -> Fulcrum.Condition!
+Fulcrum.ScoreQuestion<TEnum>.IsNot(TEnum level) -> Fulcrum.Condition!
+Fulcrum.ScoreQuestion<TEnum>.Levels.get -> System.Collections.Generic.IReadOnlyList<(TEnum Value, string! Description)>!
+Fulcrum.ServiceCollectionExtensions
+Fulcrum.SystemOneException
+Fulcrum.SystemOneException.SystemOneException(string! message, System.Exception! inner) -> void
+Fulcrum.SystemOneException.SystemOneException(string! message) -> void
+Fulcrum.SystemOneException.SystemOneException(System.Collections.Generic.IReadOnlyList<string!>! violations) -> void
+Fulcrum.SystemOneException.Violations.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Fulcrum.Testing.FakeRequest
+Fulcrum.Testing.FakeRequest.<Clone>$() -> Fulcrum.Testing.FakeRequest!
+Fulcrum.Testing.FakeRequest.Content.get -> Fulcrum.Content!
+Fulcrum.Testing.FakeRequest.Content.init -> void
+Fulcrum.Testing.FakeRequest.Deconstruct(out Fulcrum.Content! Content, out System.Collections.Generic.IReadOnlyList<Fulcrum.Question!>! Questions) -> void
+Fulcrum.Testing.FakeRequest.Equals(Fulcrum.Testing.FakeRequest? other) -> bool
+Fulcrum.Testing.FakeRequest.FakeRequest(Fulcrum.Content! Content, System.Collections.Generic.IReadOnlyList<Fulcrum.Question!>! Questions) -> void
+Fulcrum.Testing.FakeRequest.Questions.get -> System.Collections.Generic.IReadOnlyList<Fulcrum.Question!>!
+Fulcrum.Testing.FakeRequest.Questions.init -> void
+Fulcrum.Testing.FakeSystemOne
+Fulcrum.Testing.FakeSystemOne.Answer(Fulcrum.BoxQuestion! q, params System.ReadOnlySpan<Fulcrum.Box> boxes) -> Fulcrum.Testing.FakeSystemOne!
+Fulcrum.Testing.FakeSystemOne.Answer(Fulcrum.YesNoQuestion! q, double probability) -> Fulcrum.Testing.FakeSystemOne!
+Fulcrum.Testing.FakeSystemOne.Answer<TEnum>(Fulcrum.ChoiceQuestion<TEnum>! q, System.Collections.Generic.IReadOnlyDictionary<TEnum, double>! probabilities) -> Fulcrum.Testing.FakeSystemOne!
+Fulcrum.Testing.FakeSystemOne.Answer<TEnum>(Fulcrum.ChoiceQuestion<TEnum>! q, TEnum value, double confidence) -> Fulcrum.Testing.FakeSystemOne!
+Fulcrum.Testing.FakeSystemOne.Answer<TEnum>(Fulcrum.ScoreQuestion<TEnum>! q, System.Collections.Generic.IReadOnlyDictionary<TEnum, double>! probabilities) -> Fulcrum.Testing.FakeSystemOne!
+Fulcrum.Testing.FakeSystemOne.Answer<TEnum>(Fulcrum.ScoreQuestion<TEnum>! q, TEnum level, double confidence) -> Fulcrum.Testing.FakeSystemOne!
+Fulcrum.Testing.FakeSystemOne.AskAsync(Fulcrum.Content! state, System.Collections.Generic.IReadOnlyList<Fulcrum.Question!>! questions, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<Fulcrum.Answers!>!
+Fulcrum.Testing.FakeSystemOne.Fail(System.Exception! exception) -> Fulcrum.Testing.FakeSystemOne!
+Fulcrum.Testing.FakeSystemOne.FakeSystemOne() -> void
+Fulcrum.Testing.FakeSystemOne.Requests.get -> System.Collections.Generic.IReadOnlyList<Fulcrum.Testing.FakeRequest!>!
+Fulcrum.YesNoAnswer
+Fulcrum.YesNoAnswer.Confidence.get -> double
+Fulcrum.YesNoAnswer.Deconstruct(out string! Question, out double Probability) -> void
+Fulcrum.YesNoAnswer.Equals(Fulcrum.YesNoAnswer? other) -> bool
+Fulcrum.YesNoAnswer.Probability.get -> double
+Fulcrum.YesNoAnswer.Probability.init -> void
+Fulcrum.YesNoAnswer.YesNoAnswer(string! Question, double Probability) -> void
+Fulcrum.YesNoQuestion
+Fulcrum.YesNoQuestion.Above(double t) -> Fulcrum.Condition!
+Fulcrum.YesNoQuestion.Below(double t) -> Fulcrum.Condition!
+Fulcrum.YesNoQuestion.Equals(Fulcrum.YesNoQuestion? other) -> bool
+override abstract Fulcrum.Condition.ToString() -> string!
+override Fulcrum.Answer.Equals(object? obj) -> bool
+override Fulcrum.Answer.GetHashCode() -> int
+override Fulcrum.Answer.ToString() -> string!
+override Fulcrum.Box.GetHashCode() -> int
+override Fulcrum.BoxAnswer.<Clone>$() -> Fulcrum.BoxAnswer!
+override Fulcrum.BoxAnswer.Equals(object? obj) -> bool
+override Fulcrum.BoxAnswer.GetHashCode() -> int
+override Fulcrum.BoxAnswer.ToString() -> string!
+override Fulcrum.BoxQuestion.<Clone>$() -> Fulcrum.BoxQuestion!
+override Fulcrum.BoxQuestion.Equals(object? obj) -> bool
+override Fulcrum.BoxQuestion.GetHashCode() -> int
+override Fulcrum.BoxQuestion.ToString() -> string!
+override Fulcrum.ChoiceAnswer.<Clone>$() -> Fulcrum.ChoiceAnswer!
+override Fulcrum.ChoiceAnswer.Equals(object? obj) -> bool
+override Fulcrum.ChoiceAnswer.GetHashCode() -> int
+override Fulcrum.ChoiceAnswer.ToString() -> string!
+override Fulcrum.ChoiceAnswer<TEnum>.Equals(object? obj) -> bool
+override Fulcrum.ChoiceAnswer<TEnum>.GetHashCode() -> int
+override Fulcrum.ChoiceAnswer<TEnum>.ToString() -> string!
+override Fulcrum.ChoiceQuestion<TEnum>.<Clone>$() -> Fulcrum.ChoiceQuestion<TEnum>!
+override Fulcrum.ChoiceQuestion<TEnum>.Equals(object? obj) -> bool
+override Fulcrum.ChoiceQuestion<TEnum>.GetHashCode() -> int
+override Fulcrum.ChoiceQuestion<TEnum>.ToString() -> string!
+override Fulcrum.Condition.Equals(object? obj) -> bool
+override Fulcrum.Condition.GetHashCode() -> int
+override Fulcrum.Image.Equals(object? obj) -> bool
+override Fulcrum.Image.GetHashCode() -> int
+override Fulcrum.Image.ToString() -> string!
+override Fulcrum.Question.Equals(object? obj) -> bool
+override Fulcrum.Question.GetHashCode() -> int
+override Fulcrum.Question.ToString() -> string!
+override Fulcrum.ScoreAnswer.<Clone>$() -> Fulcrum.ScoreAnswer!
+override Fulcrum.ScoreAnswer.Equals(object? obj) -> bool
+override Fulcrum.ScoreAnswer.GetHashCode() -> int
+override Fulcrum.ScoreAnswer.ToString() -> string!
+override Fulcrum.ScoreAnswer<TEnum>.Equals(object? obj) -> bool
+override Fulcrum.ScoreAnswer<TEnum>.GetHashCode() -> int
+override Fulcrum.ScoreAnswer<TEnum>.ToString() -> string!
+override Fulcrum.ScoreQuestion<TEnum>.<Clone>$() -> Fulcrum.ScoreQuestion<TEnum>!
+override Fulcrum.ScoreQuestion<TEnum>.Equals(object? obj) -> bool
+override Fulcrum.ScoreQuestion<TEnum>.GetHashCode() -> int
+override Fulcrum.ScoreQuestion<TEnum>.ToString() -> string!
+override Fulcrum.Testing.FakeRequest.Equals(object? obj) -> bool
+override Fulcrum.Testing.FakeRequest.GetHashCode() -> int
+override Fulcrum.Testing.FakeRequest.ToString() -> string!
+override Fulcrum.YesNoAnswer.<Clone>$() -> Fulcrum.YesNoAnswer!
+override Fulcrum.YesNoAnswer.Equals(object? obj) -> bool
+override Fulcrum.YesNoAnswer.GetHashCode() -> int
+override Fulcrum.YesNoAnswer.ToString() -> string!
+override Fulcrum.YesNoQuestion.<Clone>$() -> Fulcrum.YesNoQuestion!
+override Fulcrum.YesNoQuestion.Equals(object? obj) -> bool
+override Fulcrum.YesNoQuestion.GetHashCode() -> int
+override Fulcrum.YesNoQuestion.ToString() -> string!
+override sealed Fulcrum.BoxAnswer.Equals(Fulcrum.Answer? other) -> bool
+override sealed Fulcrum.BoxQuestion.Equals(Fulcrum.Question? other) -> bool
+override sealed Fulcrum.ChoiceAnswer.Equals(Fulcrum.Answer? other) -> bool
+override sealed Fulcrum.ChoiceQuestion<TEnum>.Equals(Fulcrum.Question? other) -> bool
+override sealed Fulcrum.ScoreAnswer.Equals(Fulcrum.Answer? other) -> bool
+override sealed Fulcrum.ScoreQuestion<TEnum>.Equals(Fulcrum.Question? other) -> bool
+override sealed Fulcrum.YesNoAnswer.Equals(Fulcrum.Answer? other) -> bool
+override sealed Fulcrum.YesNoQuestion.Equals(Fulcrum.Question? other) -> bool
+static Fulcrum.Answer.operator !=(Fulcrum.Answer? left, Fulcrum.Answer? right) -> bool
+static Fulcrum.Answer.operator ==(Fulcrum.Answer? left, Fulcrum.Answer? right) -> bool
+static Fulcrum.Box.operator !=(Fulcrum.Box left, Fulcrum.Box right) -> bool
+static Fulcrum.Box.operator ==(Fulcrum.Box left, Fulcrum.Box right) -> bool
+static Fulcrum.BoxAnswer.operator !=(Fulcrum.BoxAnswer? left, Fulcrum.BoxAnswer? right) -> bool
+static Fulcrum.BoxAnswer.operator ==(Fulcrum.BoxAnswer? left, Fulcrum.BoxAnswer? right) -> bool
+static Fulcrum.BoxQuestion.operator !=(Fulcrum.BoxQuestion? left, Fulcrum.BoxQuestion? right) -> bool
+static Fulcrum.BoxQuestion.operator ==(Fulcrum.BoxQuestion? left, Fulcrum.BoxQuestion? right) -> bool
+static Fulcrum.ChoiceAnswer.operator !=(Fulcrum.ChoiceAnswer? left, Fulcrum.ChoiceAnswer? right) -> bool
+static Fulcrum.ChoiceAnswer.operator ==(Fulcrum.ChoiceAnswer? left, Fulcrum.ChoiceAnswer? right) -> bool
+static Fulcrum.ChoiceAnswer<TEnum>.operator !=(Fulcrum.ChoiceAnswer<TEnum>? left, Fulcrum.ChoiceAnswer<TEnum>? right) -> bool
+static Fulcrum.ChoiceAnswer<TEnum>.operator ==(Fulcrum.ChoiceAnswer<TEnum>? left, Fulcrum.ChoiceAnswer<TEnum>? right) -> bool
+static Fulcrum.ChoiceQuestion<TEnum>.operator !=(Fulcrum.ChoiceQuestion<TEnum>? left, Fulcrum.ChoiceQuestion<TEnum>? right) -> bool
+static Fulcrum.ChoiceQuestion<TEnum>.operator ==(Fulcrum.ChoiceQuestion<TEnum>? left, Fulcrum.ChoiceQuestion<TEnum>? right) -> bool
+static Fulcrum.Condition.operator !(Fulcrum.Condition! c) -> Fulcrum.Condition!
+static Fulcrum.Condition.operator !=(Fulcrum.Condition? left, Fulcrum.Condition? right) -> bool
+static Fulcrum.Condition.operator &(Fulcrum.Condition! l, Fulcrum.Condition! r) -> Fulcrum.Condition!
+static Fulcrum.Condition.operator ==(Fulcrum.Condition? left, Fulcrum.Condition? right) -> bool
+static Fulcrum.Condition.operator |(Fulcrum.Condition! l, Fulcrum.Condition! r) -> Fulcrum.Condition!
+static Fulcrum.Condition.operator false(Fulcrum.Condition! c) -> bool
+static Fulcrum.Condition.operator true(Fulcrum.Condition! c) -> bool
+static Fulcrum.Content.From(string! text) -> Fulcrum.Content!
+static Fulcrum.Content.Image(System.ReadOnlyMemory<byte> bytes, string! mediaType) -> Fulcrum.Content!
+static Fulcrum.Content.Image(System.Uri! url) -> Fulcrum.Content!
+static Fulcrum.Content.implicit operator Fulcrum.Content!(string! text) -> Fulcrum.Content!
+static Fulcrum.Image.operator !=(Fulcrum.Image? left, Fulcrum.Image? right) -> bool
+static Fulcrum.Image.operator ==(Fulcrum.Image? left, Fulcrum.Image? right) -> bool
+static Fulcrum.Question.Box(string! name, string! text) -> Fulcrum.BoxQuestion!
+static Fulcrum.Question.Choice<TEnum>(string! name, string! text, params System.ReadOnlySpan<(TEnum, string!)> options) -> Fulcrum.ChoiceQuestion<TEnum>!
+static Fulcrum.Question.operator !=(Fulcrum.Question? left, Fulcrum.Question? right) -> bool
+static Fulcrum.Question.operator ==(Fulcrum.Question? left, Fulcrum.Question? right) -> bool
+static Fulcrum.Question.Score<TEnum>(string! name, string! text, params System.ReadOnlySpan<(TEnum, string!)> levels) -> Fulcrum.ScoreQuestion<TEnum>!
+static Fulcrum.Question.YesNo(string! name, string! text) -> Fulcrum.YesNoQuestion!
+static Fulcrum.ScoreAnswer.operator !=(Fulcrum.ScoreAnswer? left, Fulcrum.ScoreAnswer? right) -> bool
+static Fulcrum.ScoreAnswer.operator ==(Fulcrum.ScoreAnswer? left, Fulcrum.ScoreAnswer? right) -> bool
+static Fulcrum.ScoreAnswer<TEnum>.operator !=(Fulcrum.ScoreAnswer<TEnum>? left, Fulcrum.ScoreAnswer<TEnum>? right) -> bool
+static Fulcrum.ScoreAnswer<TEnum>.operator ==(Fulcrum.ScoreAnswer<TEnum>? left, Fulcrum.ScoreAnswer<TEnum>? right) -> bool
+static Fulcrum.ScoreQuestion<TEnum>.operator !=(Fulcrum.ScoreQuestion<TEnum>? left, Fulcrum.ScoreQuestion<TEnum>? right) -> bool
+static Fulcrum.ScoreQuestion<TEnum>.operator ==(Fulcrum.ScoreQuestion<TEnum>? left, Fulcrum.ScoreQuestion<TEnum>? right) -> bool
+static Fulcrum.ServiceCollectionExtensions.AddFulcrum(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Fulcrum.FulcrumBuilder!>! configure) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Fulcrum.Testing.FakeRequest.operator !=(Fulcrum.Testing.FakeRequest? left, Fulcrum.Testing.FakeRequest? right) -> bool
+static Fulcrum.Testing.FakeRequest.operator ==(Fulcrum.Testing.FakeRequest? left, Fulcrum.Testing.FakeRequest? right) -> bool
+static Fulcrum.YesNoAnswer.operator !=(Fulcrum.YesNoAnswer? left, Fulcrum.YesNoAnswer? right) -> bool
+static Fulcrum.YesNoAnswer.operator ==(Fulcrum.YesNoAnswer? left, Fulcrum.YesNoAnswer? right) -> bool
+static Fulcrum.YesNoQuestion.operator !=(Fulcrum.YesNoQuestion? left, Fulcrum.YesNoQuestion? right) -> bool
+static Fulcrum.YesNoQuestion.operator ==(Fulcrum.YesNoQuestion? left, Fulcrum.YesNoQuestion? right) -> bool
+static readonly Fulcrum.Answers.Empty -> Fulcrum.Answers!
+virtual Fulcrum.Answer.EqualityContract.get -> System.Type!
+virtual Fulcrum.Answer.Equals(Fulcrum.Answer? other) -> bool
+virtual Fulcrum.Answer.PrintMembers(System.Text.StringBuilder! builder) -> bool
+virtual Fulcrum.Condition.EqualityContract.get -> System.Type!
+virtual Fulcrum.Condition.Equals(Fulcrum.Condition? other) -> bool
+virtual Fulcrum.Condition.PrintMembers(System.Text.StringBuilder! builder) -> bool
+virtual Fulcrum.Decision<TState, TOutcome>.Name.get -> string!
+virtual Fulcrum.Decision<TState, TOutcome>.React(Fulcrum.IReactions<TState, TOutcome>! reactions) -> void
+virtual Fulcrum.Question.EqualityContract.get -> System.Type!
+virtual Fulcrum.Question.Equals(Fulcrum.Question? other) -> bool
+virtual Fulcrum.Question.PrintMembers(System.Text.StringBuilder! builder) -> bool

@@ -1,0 +1,30 @@
+# Live tests against Jev on OpenRouter run on ubuntu only, and only when the OPENROUTER_API_KEY secret is set.
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet build -c Release -p:ContinuousIntegrationBuild=true -p:RepositoryUrl=https://github.com/${{ github.repository }}
+      - run: dotnet test -c Release --no-build
+        env:
+          OPENROUTER_API_KEY: ${{ matrix.os == 'ubuntu-latest' && secrets.OPENROUTER_API_KEY || '' }}
+      - name: AOT publish of the console sample
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: |
+          dotnet publish samples/Fulcrum.Sample.Console -c Release -r linux-x64 2>&1 | tee publish.log
+          test "${PIPESTATUS[0]}" -eq 0
+          if grep -E "warning IL[0-9]+" publish.log; then exit 1; fi
