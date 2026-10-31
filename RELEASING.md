@@ -11,9 +11,10 @@ The release workflow does the publishing; a maintainer only pushes a tag.
    reporting* (SECURITY.md points people there) and *Dependabot* (the config
    is in `.github/dependabot.yml`).
 2. **NuGet account.** Sign in at https://www.nuget.org with a Microsoft
-   account. Optional but recommended: reserve the `Fulcrum` ID prefix under
-   *Manage Packages → Reserve a prefix* so no one else can publish
-   `Fulcrum.*`.
+   account. Optional but recommended: reserve the `Fulcrum` ID prefix so no
+   one else can publish `Fulcrum.*`. There is no button for this; email
+   account@nuget.org with your nuget.org profile name and the prefix. Common
+   words are often refused, and the team may ask for identity details.
 3. **Trusted Publishing policy.** On nuget.org open your profile name →
    *Trusted Publishing → Add*. Repository owner: your GitHub user or org.
    Repository: `fulcrum`. Workflow file: `release.yml` (file name only).
