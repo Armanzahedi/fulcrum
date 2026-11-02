@@ -9,7 +9,6 @@ All notable changes to this project are documented here. The format follows [Kee
 ### Added
 
 - Package icon.
-
 - `Fulcrum`: typed questions (`Choice<TEnum>`, `YesNo`, `Score<TEnum>`, `Box`) over text and image `Content`.
 - `Fulcrum`: conditions built with `&&`, `||` and `!` on question handles; first-match rules with a required `Default`, an optional `OnError` and `WhenAnyConfidenceBelow`.
 - `Fulcrum`: `Decision<TState, TOutcome>` with `DecideAsync` and `RunAsync`; outcome handlers through `React` with `With<THandler>()`, `With(delegate)` and `Nothing()`.
