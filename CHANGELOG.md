@@ -4,13 +4,11 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-02
+
 ### Added
 
 - Package icon.
-
-## [1.0.0] - 2026-11-02
-
-### Added
 
 - `Fulcrum`: typed questions (`Choice<TEnum>`, `YesNo`, `Score<TEnum>`, `Box`) over text and image `Content`.
 - `Fulcrum`: conditions built with `&&`, `||` and `!` on question handles; first-match rules with a required `Default`, an optional `OnError` and `WhenAnyConfidenceBelow`.
