@@ -1,0 +1,14 @@
+#nullable enable
+[FUL0001]Fulcrum.Jev.JevClient
+[FUL0001]Fulcrum.Jev.JevClient.AskAsync(Fulcrum.Content! state, System.Collections.Generic.IReadOnlyList<Fulcrum.Question!>! questions, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<Fulcrum.Answers!>!
+[FUL0001]Fulcrum.Jev.JevClient.JevClient(System.Net.Http.HttpClient! http, Fulcrum.Jev.JevOptions! options) -> void
+[FUL0001]Fulcrum.Jev.JevOptions
+[FUL0001]Fulcrum.Jev.JevOptions.ApiKey.get -> string?
+[FUL0001]Fulcrum.Jev.JevOptions.ApiKey.set -> void
+[FUL0001]Fulcrum.Jev.JevOptions.BaseAddress.get -> System.Uri!
+[FUL0001]Fulcrum.Jev.JevOptions.BaseAddress.set -> void
+[FUL0001]Fulcrum.Jev.JevOptions.JevOptions() -> void
+[FUL0001]Fulcrum.Jev.JevOptions.Model.get -> string!
+[FUL0001]Fulcrum.Jev.JevOptions.Model.set -> void
+[FUL0001]Fulcrum.JevFulcrumBuilderExtensions
+[FUL0001]static Fulcrum.JevFulcrumBuilderExtensions.UseJev(this Fulcrum.FulcrumBuilder! f, System.Action<Fulcrum.Jev.JevOptions!>! configure) -> Fulcrum.FulcrumBuilder!

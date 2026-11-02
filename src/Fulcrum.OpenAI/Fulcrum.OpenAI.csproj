@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Fulcrum provider for any OpenAI-compatible chat completions endpoint (OpenAI, OpenRouter, ...) using strict JSON schema output and a validation re-ask loop.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fulcrum\Fulcrum.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\RetryingHandler.cs" Link="Shared\RetryingHandler.cs" />
+    <Compile Include="..\Shared\Endpoint.cs" Link="Shared\Endpoint.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Fulcrum.OpenAI.Tests" />
+  </ItemGroup>
+</Project>

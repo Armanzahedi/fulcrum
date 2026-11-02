@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <NoWarn>$(NoWarn);FUL0001</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fulcrum\Fulcrum.csproj" />
+    <ProjectReference Include="..\..\src\Fulcrum.OpenAI\Fulcrum.OpenAI.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\TestDecisions.cs" Link="Shared\TestDecisions.cs" />
+    <Compile Include="..\Shared\FakeHttpHandler.cs" Link="Shared\FakeHttpHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

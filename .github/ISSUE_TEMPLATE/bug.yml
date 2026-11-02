@@ -1,0 +1,29 @@
+name: Bug report
+description: Something in Fulcrum does not behave as documented.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Include the decision, the provider (Jev, OpenAI, fake, custom) and the `Explain()` output if you have one.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: Ideally a test using `FakeSystemOne`.
+      render: csharp
+  - type: input
+    id: version
+    attributes:
+      label: Fulcrum version and .NET SDK
+    validations:
+      required: true

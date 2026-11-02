@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Fulcrum/Fulcrum.csproj" />
+    <Project Path="src/Fulcrum.Jev/Fulcrum.Jev.csproj" />
+    <Project Path="src/Fulcrum.OpenAI/Fulcrum.OpenAI.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Fulcrum.Tests/Fulcrum.Tests.csproj" />
+    <Project Path="tests/Fulcrum.Jev.Tests/Fulcrum.Jev.Tests.csproj" />
+    <Project Path="tests/Fulcrum.OpenAI.Tests/Fulcrum.OpenAI.Tests.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Fulcrum.Sample.Console/Fulcrum.Sample.Console.csproj" />
+    <Project Path="samples/Fulcrum.Sample.Api/Fulcrum.Sample.Api.csproj" />
+    <Project Path="samples/Fulcrum.Sample.Transactions/Fulcrum.Sample.Transactions.csproj" />
+  </Folder>
+</Solution>

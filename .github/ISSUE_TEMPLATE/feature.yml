@@ -1,0 +1,20 @@
+name: Feature request
+description: Propose a change to Fulcrum.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What can you not do today? Show the code you have to write instead.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      render: csharp
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
