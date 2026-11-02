@@ -7,9 +7,9 @@ Fulcrum turns typed questions and ordered rules into one committed outcome, and 
 ## Install
 
 ```sh
-dotnet add package Fulcrum            # core, fake model, DI registration
-dotnet add package Fulcrum.OpenAI     # Jev on OpenRouter, OpenAI, or any OpenAI-compatible endpoint
-dotnet add package Fulcrum.Jev        # native Jev API (experimental)
+dotnet add package FulcrumCore            # core, fake model, DI registration
+dotnet add package FulcrumCore.OpenAI     # Jev on OpenRouter, OpenAI, or any OpenAI-compatible endpoint
+dotnet add package FulcrumCore.Jev        # native Jev API (experimental)
 ```
 
 Targets `net10.0`. The full guide is `docs/guide.md` in the repository.
@@ -121,10 +121,10 @@ Only questions referenced by a rule are sent to the model. Rules are first-match
 
 | Call | Package | Talks to |
 |---|---|---|
-| `UseOpenAI(o => ...)` | `Fulcrum.OpenAI` | any OpenAI-compatible `chat/completions` endpoint with strict JSON schema: Jev on OpenRouter, OpenAI and others. The key comes from `OpenAIOptions.ApiKey`, or from `OPENAI_API_KEY` for the default `api.openai.com` only |
-| `UseJev(o => ...)` | `Fulcrum.Jev` | Jev's native `POST /v1/systemone`. The key comes from `JevOptions.ApiKey` or `JEV_API_KEY`. Experimental |
-| `UseFake(fake)` | `Fulcrum` | a scripted `FakeSystemOne`, for tests and demos |
-| `UseClient<T>()` / `UseClient(sp => ...)` | `Fulcrum` | your own `ISystemOne` |
+| `UseOpenAI(o => ...)` | `FulcrumCore.OpenAI` | any OpenAI-compatible `chat/completions` endpoint with strict JSON schema: Jev on OpenRouter, OpenAI and others. The key comes from `OpenAIOptions.ApiKey`, or from `OPENAI_API_KEY` for the default `api.openai.com` only |
+| `UseJev(o => ...)` | `FulcrumCore.Jev` | Jev's native `POST /v1/systemone`. The key comes from `JevOptions.ApiKey` or `JEV_API_KEY`. Experimental |
+| `UseFake(fake)` | `FulcrumCore` | a scripted `FakeSystemOne`, for tests and demos |
+| `UseClient<T>()` / `UseClient(sp => ...)` | `FulcrumCore` | your own `ISystemOne` |
 
 Jev on OpenRouter, verified live:
 
@@ -144,7 +144,7 @@ services.AddFulcrum(f => f
 - The OpenAI-compatible provider re-asks the model with its list of problems when an answer fails validation.
 - Provider failures surface as `SystemOneException`, which `OnError` turns into a fallback outcome.
 
-`Fulcrum.Jev` is `[Experimental("FUL0001")]` until its native wire format is verified against the live endpoint. Opt in with `<NoWarn>$(NoWarn);FUL0001</NoWarn>`.
+`FulcrumCore.Jev` is `[Experimental("FUL0001")]` until its native wire format is verified against the live endpoint. Opt in with `<NoWarn>$(NoWarn);FUL0001</NoWarn>`.
 
 To write your own provider, implement `ISystemOne.AskAsync(Content, IReadOnlyList<Question>, CancellationToken)` and return raw answers keyed by question name. `Answers.Validate(content, questions)` is public if you want to re-ask on bad output.
 

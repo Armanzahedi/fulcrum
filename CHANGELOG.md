@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-02
+
+### Changed
+
+- Package IDs are `FulcrumCore`, `FulcrumCore.OpenAI` and `FulcrumCore.Jev`. The `Fulcrum.` prefix is reserved on nuget.org by another owner, so the earlier `Fulcrum` package is unlisted. Assembly names and namespaces are unchanged.
+
 ## [0.1.0] - 2026-11-02
 
 ### Added

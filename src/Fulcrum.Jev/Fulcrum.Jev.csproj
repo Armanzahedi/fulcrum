@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <PackageId>FulcrumCore.Jev</PackageId>
     <Description>Fulcrum provider for the native Jev System One API (POST /v1/systemone). Experimental (FUL0001).</Description>
   </PropertyGroup>
   <ItemGroup>

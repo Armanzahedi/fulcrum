@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <PackageId>FulcrumCore.OpenAI</PackageId>
     <Description>Fulcrum provider for any OpenAI-compatible chat completions endpoint (OpenAI, OpenRouter, ...) using strict JSON schema output and a validation re-ask loop.</Description>
   </PropertyGroup>
   <ItemGroup>

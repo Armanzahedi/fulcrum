@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <PackageId>FulcrumCore</PackageId>
     <Description>Turn System One model answers into committed outcomes: typed questions, first-match rules, enum outcomes, outcome handlers and Explain(). Provider-neutral, AOT-compatible.</Description>
     <RootNamespace>Fulcrum</RootNamespace>
   </PropertyGroup>
