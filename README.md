@@ -1,5 +1,9 @@
 # Fulcrum
 
+[![NuGet](https://img.shields.io/nuget/v/FulcrumCore?label=FulcrumCore)](https://www.nuget.org/packages/FulcrumCore)
+[![CI](https://github.com/Armanzahedi/fulcrum/actions/workflows/ci.yml/badge.svg)](https://github.com/Armanzahedi/fulcrum/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 System One models answer small structured questions with probability distributions.
 Your application needs a verb: reply, page someone, send it to a human.
 Fulcrum turns typed questions and ordered rules into one committed outcome, and dispatches it to a handler that never sees a probability.
